@@ -1,4 +1,16 @@
 Ecommerce::Application.routes.draw do
+  get "products/create"
+
+  get "products/update"
+
+  get "products/edit"
+
+  get "products/show"
+
+  get "products/destroy"
+
+  resources :categories, except: [:new, :edit]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
