@@ -1,13 +1,13 @@
 Ecommerce::Application.routes.draw do
-  get "products/create"
+  post "products/create"
 
-  get "products/update"
+  put "products/update/:id" => 'products#update'
 
-  get "products/edit"
+  get "products/show/:id" => 'products#show'
 
-  get "products/show"
+  get "products/all" => 'products#index'
 
-  get "products/destroy"
+  delete 'products/delete/:id' => 'products#destroy'
 
   resources :categories, except: [:new, :edit]
 

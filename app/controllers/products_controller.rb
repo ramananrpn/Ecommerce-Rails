@@ -4,31 +4,41 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      render json: @product, status: :created, location: @product
+      render json: @product, status: :created, location: 'products/show/:id_url'
     else
       render json: @product.errors, status: :unprocessable_entity
     end
   end
 
   def update
-  end
-
-  def edit
+    if @product.update_attributes(params[:product])
+      head :no_content
+    else
+      render json: @product.errors, status: :unprocessable_entity
+    end
   end
 
   def show
+    render json: @product
   end
 
   def destroy
+    product.destroy
+    head :no_content
+  end
+
+  def index
+    @products = Product.all
+    render json: @products, status: :ok
   end
 
   private
 
   def set_product
-    @category = Category.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def product_params
-    params[:category]
+    params[:product]
   end
 end
