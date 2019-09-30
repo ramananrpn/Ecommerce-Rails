@@ -9,7 +9,10 @@ gem 'rails', '3.2.22.5'
 gem 'rails-api'
 
 gem 'mysql'
-
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+gem "dotenv-rails"
 
 
 
