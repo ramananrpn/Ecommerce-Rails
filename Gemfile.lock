@@ -29,8 +29,25 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
-    bcrypt (3.1.13)
+    bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    celluloid (0.17.4)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.6)
+      timers (>= 4.1.1)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     dotenv (2.7.5)
@@ -83,11 +100,15 @@ GEM
     rake (13.0.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redis (4.1.1)
-    sidekiq (5.2.3)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+    redis (3.3.5)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
+    sidekiq (3.5.4)
+      celluloid (~> 0.17.2)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
+      redis-namespace (~> 1.5, >= 1.5.2)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -103,6 +124,7 @@ GEM
     temple (0.8.2)
     thor (0.20.3)
     tilt (1.4.1)
+    timers (4.3.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -112,13 +134,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt-ruby (~> 3.0.0)
   dotenv-rails
   jbuilder
   mysql
   rails (= 3.2.22.5)
   rails-api
-  sidekiq
+  sidekiq (~> 3.5.4)
   sinatra
   slim
 

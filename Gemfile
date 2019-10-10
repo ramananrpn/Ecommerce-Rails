@@ -9,15 +9,12 @@ gem 'rails', '3.2.22.5'
 gem 'rails-api'
 
 gem 'mysql'
-gem 'sidekiq'
+gem 'sidekiq' ,'~> 3.5.4'
 gem 'sinatra', require: false
 gem 'slim'
 gem "dotenv-rails"
-
-
-
 # To use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt-ruby' , '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'

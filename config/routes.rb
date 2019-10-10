@@ -1,4 +1,18 @@
 Ecommerce::Application.routes.draw do
+
+  # users
+  post "user/create" => "users#create"
+
+  put "users/update/:id" => 'users#update'
+
+  get "users/show/:id" => 'users#show'
+
+  get "users/all" => 'users#index'
+
+  delete 'users/delete/:id' => 'users#destroy'
+
+  # products
+
   post "products/create"
 
   put "products/update/:id" => 'products#update'
@@ -10,6 +24,10 @@ Ecommerce::Application.routes.draw do
   delete 'products/delete/:id' => 'products#destroy'
 
   resources :categories, except: [:new, :edit]
+
+  # SIDEKIQ
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
